@@ -7,6 +7,7 @@ use App\Models\Activity\Activity;
 use App\Models\Activity\ActivityType;
 use App\Models\Participant;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use MatanYadaev\EloquentSpatial\Enums\Srid;
 use MatanYadaev\EloquentSpatial\Objects\LineString;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 use MatanYadaev\EloquentSpatial\Objects\Polygon;
@@ -39,7 +40,7 @@ class ActivityFactory extends Factory
             'registration_link' => fake()->url(),
             'area' => new Polygon([
                 new LineString($points),
-            ]),
+            ], Srid::WGS84->value),
             'activity_times' => [
                 new ActivityTimeDTO(
                     date: fake()->date(),

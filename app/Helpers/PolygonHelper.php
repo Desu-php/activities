@@ -14,11 +14,11 @@ class PolygonHelper
         return new Polygon([
             new LineString(
                 array_map(
-                    fn(array $poin) => new Point($poin[1], $poin[0], Srid::WGS84->value),
+                    fn(array $poin) => new Point($poin[1], $poin[0]),
                     $points['geojson']['features'][0]['geometry']['coordinates'][0]
                 )
             ),
-        ]);
+        ], Srid::WGS84->value);
     }
 
     public static function toField(Polygon $polygon): array

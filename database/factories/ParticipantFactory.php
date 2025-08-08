@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Participant;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use MatanYadaev\EloquentSpatial\Enums\Srid;
 use MatanYadaev\EloquentSpatial\Objects\LineString;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 use MatanYadaev\EloquentSpatial\Objects\Polygon;
@@ -32,7 +33,7 @@ class ParticipantFactory extends Factory
             'logo' => fake()->imageUrl(300, 300, 'logo'),
             'area' => new Polygon([
                 new LineString($points),
-            ]),
+            ], Srid::WGS84->value),
         ];
     }
 }

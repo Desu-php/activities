@@ -2,8 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Activity\Activity;
-use App\Models\Participant;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -35,10 +33,6 @@ class CreateAdminCommand extends Command
      */
     public function handle(): int
     {
-        Activity::all()->each(function (Activity $participant) {
-            dd($participant->activity_times);
-        });
-
         $name = $this->option('name') ?? $this->ask('Name');
         $email = $this->option('email') ?? $this->ask('Email address');
         $password = $this->option('password') ?? $this->secret('Password');
